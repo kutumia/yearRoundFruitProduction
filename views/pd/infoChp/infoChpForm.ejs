@@ -1,0 +1,103 @@
+<%- include('../../includes/header')-%>
+        <div class="wrapper">
+          <%- include('../../includes/topbar')-%>
+            <div class="page-wrap">
+              <%- include('../../includes/sidebar')-%>
+              <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row clearfix">
+                    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title"><h2>সেন্টারের সিএইচপি সংক্রান্ত তথ্য ফর্ম</h2></div>
+                                <p><%
+                                if(success !=''){ %>
+                                <%= success %>
+                                    <% } %>
+                                </p>
+                                </div>  
+                            <div class="panel-body" >
+                                <form action="/center/infoChpForms" id="FieldTrialForm" class="form-horizontal" method="post"  role="form">
+                                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                                        <p>Error:</p>
+                                        <span></span>
+                                    </div>
+
+                                        
+                                    <div class="form-group">
+                                        <label for="name" class="col-md-3 control-label">সিএইচপির নাম,ঠিকানা,মোবাইল নং</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="name" placeholder="সিএইচপির নাম,ঠিকানা,মোবাইল নং">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="date" class="col-md-3 control-label">নিয়োগের তারিখ</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="date" placeholder="নিয়োগের তারিখ">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="prodorshoni" class="col-md-3 control-label">সিএইচপির সহযোগিতায় স্থাপিত প্রদর্শনীর সংখ্যা</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="prodorshoni" placeholder="সিএইচপির সহযোগিতায় স্থাপিত প্রদর্শনীর সংখ্যা">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="bagan" class="col-md-3 control-label">মোটিভেশনের মাধ্যমে স্থাপিত বাগানের সংখ্যা</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="bagan" placeholder="মোটিভেশনের মাধ্যমে স্থাপিত বাগানের সংখ্যা">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="proBagan" class="col-md-3 control-label">প্রদর্শনীর বাগানের বর্তমান অবস্থা</label>
+                                        <div class="col-md-9">
+                                        <input type="text" class="form-control" name="proBagan" placeholder="প্রদর্শনীর বাগানের বর্তমান অবস্থা">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="comment" class="col-md-3 control-label">মন্তব্য</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="comment" placeholder="মন্তব্য">
+                                        </div>
+                                    </div>
+
+                                   
+                                   
+                                    <div class="form-group">
+                                        <label for="year" class="col-md-3 control-label">বছর</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="year" placeholder="বছর">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="year" class="col-md-3 control-label">userid</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="user_id" placeholder="id" value="<%= user_id %>" >
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <!-- Button -->                                        
+                                        <div class="col-md-offset-3 col-md-9">
+                                        <input type="submit" name="submit" value="submit" class="btn btn-primary">   
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                        
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../../includes/footer')-%>

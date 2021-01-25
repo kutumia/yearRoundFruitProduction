@@ -1,0 +1,94 @@
+<%- include('../../includes/header')-%>
+        <div class="wrapper">
+          <%- include('../../includes/topbar')-%>
+            <div class="page-wrap">
+              <%- include('../../includes/sidebar')-%>
+              <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row clearfix">
+                    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title"><h2>গার্ড শেড/নার্সারি নির্মাণ বিষয়ক তথ্য ফর্ম</h2></div>
+                                <p><%
+                                if(success !=''){ %>
+                                <%= success %>
+                                    <% } %>
+                                </p>
+                                </div>  
+                            <div class="panel-body" >
+                                <form action="/center/guardDevelopmentForms" id="FieldTrialForm" class="form-horizontal" method="post"  role="form">
+                                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                                        <p>Error:</p>
+                                        <span></span>
+                                    </div>
+
+                                        
+                                    <div class="form-group">
+                                        <label for="kaj" class="col-md-3 control-label">কাজের বিবরণ</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="kaj" placeholder="কাজের বিবরণ">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="poriman" class="col-md-3 control-label">পরিমাণ(ঘনফুট/রানিংমিটার)</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="poriman" placeholder="পরিমাণ(ঘনফুট/রানিংমিটার)">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ortho" class="col-md-3 control-label">অর্থ ব্যয়</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="ortho" placeholder="অর্থ ব্যয়">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="present" class="col-md-3 control-label">বর্তমান অবস্থা</label>
+                                        <div class="col-md-9">
+                                        <input type="text" class="form-control" name="present" placeholder="বর্তমান অবস্থা">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="comment" class="col-md-3 control-label">মন্তব্য</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="comment" placeholder=মন্তব্য>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="year" class="col-md-3 control-label">বছর</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="year" placeholder="বছর">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="year" class="col-md-3 control-label">userid</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="user_id" placeholder="id" value="<%= user_id %>" >
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <!-- Button -->                                        
+                                        <div class="col-md-offset-3 col-md-9">
+                                        <input type="submit" name="submit" value="submit" class="btn btn-primary">   
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                        
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../../includes/footer')-%>
