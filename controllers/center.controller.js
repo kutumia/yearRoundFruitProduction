@@ -317,6 +317,46 @@ module.exports.chpFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //chp controller end
 
 //farmer controller
@@ -391,6 +431,46 @@ module.exports.farmerFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //farmer controller end
 
 //kormokorta controller
@@ -465,6 +545,46 @@ module.exports.kormokortaFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //kormokorta controller end
 
 //saao controller
@@ -539,6 +659,46 @@ module.exports.saaoFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //saao controller end
 
 //uddan controller
@@ -613,6 +773,46 @@ module.exports.uddanFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //uddan controller end
 
 //female controller
@@ -687,6 +887,46 @@ module.exports.femaleFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //female controller end
 
 //gardener controller
@@ -761,6 +1001,46 @@ module.exports.gardenerFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //kormokorta controller end
 
 //nurseryman controller
@@ -835,6 +1115,46 @@ module.exports.nurserymanFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //nurseryman controller end
 
 //sprayman controller
@@ -909,6 +1229,46 @@ module.exports.spraymanFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //sprayman controller end
 
 //apa controller
@@ -995,6 +1355,45 @@ module.exports.apaFormPost=async(req,res)=>{
   
 };
 
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //apa controller end
 
 
@@ -1061,6 +1460,46 @@ module.exports.buildingDevelopmentFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //buildingDevelopment controller end
 
 //guardDevelopment controller
@@ -1125,6 +1564,46 @@ module.exports.guardDevelopmentFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //guardDevelopment controller end
 
 //landDevelopment controller
@@ -1189,6 +1668,46 @@ module.exports.landDevelopmentFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //landDevelopment controller end
 
 //seedDevelopment controller
@@ -1253,6 +1772,46 @@ module.exports.seedDevelopmentFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //seedDevelopment controller end
 
 //wallDevelopment controller
@@ -1317,6 +1876,46 @@ module.exports.wallDevelopmentFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //wallDevelopment controller end
 
 //prodorshoni controller
@@ -1390,7 +1989,45 @@ module.exports.prodorshoniFormPost=async(req,res)=>{
         });
   
 };
-
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //prodorshoni controller end
 
 //infoChp controller
@@ -1457,6 +2094,46 @@ module.exports.infoChpFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //infoChp controller end
 
 //infoWorker controller
@@ -1519,7 +2196,45 @@ module.exports.infoWorkerFormPost=async(req,res)=>{
         });
   
 };
-
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //infoWorker controller end
 
 //development controller
@@ -1532,8 +2247,7 @@ module.exports.motivation=async(req,res)=>{
         res.render('center/motivation/motivation', { title: 'মোটিভেশনের মাধ্যমে বাগান স্থাপনকারী চাষীদের তালিকা',success:'', records: data });
     })
     .catch(err => {
-        console.log("outside");
-        res.render('center/motivation/motivation', { title: 'মোটিভেশনের মাধ্যমে বাগান স্থাপনকারী চাষীদের তালিকা',success:'', records: err });
+        console.log(err);
     })
      
     //  records:result
@@ -1550,7 +2264,7 @@ module.exports.motivationYear=async(req,res)=>{
         });
     })
     .catch(err => {
-        res.render('center/motivation/motivationYear', { title: 'মোটিভেশনের মাধ্যমে বাগান স্থাপনকারী চাষীদের তালিকা',success:'', records: err });
+        console.log(err); 
     })
 
 };
@@ -1586,6 +2300,46 @@ module.exports.motivationFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfchak1 = async (req, res) => {
+    try {
+    var data= await chp.findAll({
+        where: {  center_id: req.session.user_id },
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //motivation controller end
 
 //development controller
@@ -1598,8 +2352,7 @@ module.exports.development=async(req,res)=>{
         res.render('center/development/development', { title: 'অন্যান্য উন্নয়নমূলক কাজের প্রতিবেদন',success:'', records: data });
     })
     .catch(err => {
-        console.log("outside");
-        res.render('center/development/development', { title: 'অন্যান্য উন্নয়নমূলক কাজের প্রতিবেদন',success:'', records: err });
+        console.log(err);
     })
      
     //  records:result
@@ -1616,7 +2369,7 @@ module.exports.developmentYear=async(req,res)=>{
         });
     })
     .catch(err => {
-        res.render('center/development/developmentYear', { title: 'অন্যান্য উন্নয়নমূলক কাজের প্রতিবেদন',success:'', records: err });
+        console.log(err);
     })
 
 };
@@ -1650,4 +2403,44 @@ module.exports.developmentFormPost=async(req,res)=>{
         });
   
 };
+
+module.exports.generatePdfdevelopment = async (req, res) => {
+    try {
+    var data= await development.findAll({
+        where: {year: req.body.year, center_id: req.session.user_id}
+      })
+        ejs.renderFile(
+            path.join(__dirname, "../views/center/development/development/", "pdf.ejs"),
+            { records: data,dirname: __dirname },
+            (err, data) => {
+              if (err) {
+                console.log("error", err);
+                res.send(err);
+              } else {
+                var assesPath = path.join(__dirname, "../public/");
+                // console.log(assesPath);
+                assesPath = assesPath.replace(new RegExp(/\\/g), "/");
+  
+                var options = {
+                  height: "11.25in",
+                  width: "18.5in",
+                  header: {
+                    height: "20mm",
+                  },
+                  footer: {
+                    height: "20mm",
+                  },
+                  base: "file:///" + assesPath,
+                };
+                res.json({ html: data });
+              }
+            }
+        )
+      
+      
+    } catch (e) {
+      console.log(e);
+    }
+  
+  };
 //motivation controller end
