@@ -3,7 +3,17 @@ const router = express.Router();
 // const { Router } = require("express");
 const app=express();
 
-const {sprayman,spraymanYear,spraymanForm,spraymanFormPost,female,femaleYear,femaleForm,femaleFormPost,gardener,gardenerYear,gardenerForm,gardenerFormPost,nurseryman,nurserymanYear,nurserymanForm,nurserymanFormPost,development,developmentYear,developmentForm,developmentFormPost,motivation,motivationYear,motivationForm,motivationFormPost,infoWorker,infoWorkerYear,infoWorkerForm,infoWorkerFormPost,infoChp,infoChpYear,infoChpForm,infoChpFormPost,prodorshoni,prodorshoniYear,prodorshoniForm,prodorshoniFormPost,wallDevelopment,wallDevelopmentYear,wallDevelopmentForm,wallDevelopmentFormPost,seedDevelopment,seedDevelopmentYear,seedDevelopmentForm,seedDevelopmentFormPost,landDevelopment,landDevelopmentYear,landDevelopmentForm,landDevelopmentFormPost,guardDevelopment,guardDevelopmentYear,guardDevelopmentForm,guardDevelopmentFormPost,buildingDevelopment,buildingDevelopmentYear,buildingDevelopmentForm,buildingDevelopmentFormPost,apa,apaYear,apaForm,apaFormPost,farmer,farmerYear,farmerForm,farmerFormPost,kormokorta,kormokortaYear,kormokortaForm,kormokortaFormPost,saao,saaoYear,saaoForm,saaoFormPost,uddan,uddanYear,uddanForm,uddanFormPost,charaKolomFixed,allCenterInfo,centersignup,centersignuppost,allcenter,centerlogin,centerloginpost,centerDashboard,center,centerYear,centerForm,centerFormPost,chp,chpYear,chpForm,chpFormPost} = require('../controllers/center.controller');
+const {sprayman,spraymanYear,spraymanForm,spraymanFormPost,female,femaleYear,femaleForm,femaleFormPost,
+    gardener,gardenerYear,gardenerForm,gardenerFormPost,nurseryman,nurserymanYear,nurserymanForm,nurserymanFormPost,
+    development,developmentYear,developmentForm,developmentFormPost,motivation,motivationYear,motivationForm,motivationFormPost,
+    infoWorker,infoWorkerYear,infoWorkerForm,infoWorkerFormPost,infoChp,infoChpYear,infoChpForm,infoChpFormPost,
+    prodorshoni,prodorshoniYear,prodorshoniForm,prodorshoniFormPost,wallDevelopment,wallDevelopmentYear,wallDevelopmentForm,wallDevelopmentFormPost,
+    seedDevelopment,seedDevelopmentYear,seedDevelopmentForm,seedDevelopmentFormPost,landDevelopment,landDevelopmentYear,landDevelopmentForm,landDevelopmentFormPost,
+    guardDevelopment,guardDevelopmentYear,guardDevelopmentForm,guardDevelopmentFormPost,
+    buildingDevelopment,buildingDevelopmentYear,buildingDevelopmentForm,buildingDevelopmentFormPost,apa,apaYear,apaForm,apaFormPost,
+    farmer,farmerYear,farmerForm,farmerFormPost,kormokorta,kormokortaYear,kormokortaForm,kormokortaFormPost,saao,saaoYear,saaoForm,saaoFormPost,
+    uddan,uddanYear,uddanForm,uddanFormPost,charaKolomFixed,allCenterInfo,centersignup,centersignuppost,allcenter,centerlogin,centerloginpost,centerDashboard,
+    center,centerYear,centerForm,centerFormPost,chp,chpYear,chpForm,chpFormPost,generatePdfchp,generatePdffarmer,generatePdfnurseryman,generatePdfsprayman,generatePdfkormokorta,generatePdfsaao,generatePdfgardener,generatePdffemale,generatePdfuddan,generatePdflandDevelopment,generatePdfbuildingDevelopment,generatePdfwallDevelopment} = require('../controllers/center.controller');
 
 router.get('/',allcenter);
 router.get('/allCenterInfo',allCenterInfo);
@@ -24,16 +34,19 @@ router.get('/chp',chp);
 router.post('/chpYear',chpYear);
 router.get('/chpForm',chpForm);
 router.post('/chpForms',chpFormPost);
+router.post('/generatePdfchp',generatePdfchp);
 
 router.get('/farmer',farmer);
 router.post('/farmerYear',farmerYear);
 router.get('/farmerForm',farmerForm);
 router.post('/farmerForms',farmerFormPost);
+router.post('/generatePdffarmer',generatePdffarmer);
 
 router.get('/kormokorta',kormokorta);
 router.post('/kormokortaYear',kormokortaYear);
 router.get('/kormokortaForm',kormokortaForm);
 router.post('/kormokortaForms',kormokortaFormPost);
+router.post('/generatePdfkormokorta',generatePdfkormokorta);
 
 
 router.get('/apa',apa);
@@ -45,16 +58,19 @@ router.get('/saao',saao);
 router.post('/saaoYear',saaoYear);
 router.get('/saaoForm',saaoForm);
 router.post('/saaoForms',saaoFormPost);
+router.post('/generatePdfsaao',generatePdfsaao);
 
 router.get('/uddan',uddan);
 router.post('/uddanYear',uddanYear);
 router.get('/uddanForm',uddanForm);
 router.post('/uddanForms',uddanFormPost);
+router.post('/generatePdfuddan',generatePdfuddan);
 
 router.get('/buildingDevelopment',buildingDevelopment);
 router.post('/buildingDevelopmentYear',buildingDevelopmentYear);
 router.get('/buildingDevelopmentForm',buildingDevelopmentForm);
 router.post('/buildingDevelopmentForms',buildingDevelopmentFormPost);
+router.post('/generatePdfbuildingDevelopment',generatePdfbuildingDevelopment);
 
 router.get('/guardDevelopment',guardDevelopment);
 router.post('/guardDevelopmentYear',guardDevelopmentYear);
@@ -65,6 +81,7 @@ router.get('/landDevelopment',landDevelopment);
 router.post('/landDevelopmentYear',landDevelopmentYear);
 router.get('/landDevelopmentForm',landDevelopmentForm);
 router.post('/landDevelopmentForms',landDevelopmentFormPost);
+router.post('/generatePdfuddanlandDevelopment',generatePdflandDevelopment);
 
 router.get('/seedDevelopment',seedDevelopment);
 router.post('/seedDevelopmentYear',seedDevelopmentYear);
@@ -75,6 +92,7 @@ router.get('/wallDevelopment',wallDevelopment);
 router.post('/wallDevelopmentYear',wallDevelopmentYear);
 router.get('/wallDevelopmentForm',wallDevelopmentForm);
 router.post('/wallDevelopmentForms',wallDevelopmentFormPost);
+router.post('/generatePdfwallDevelopment',generatePdfwallDevelopment);
 
 router.get('/prodorshoni',prodorshoni);
 router.post('/prodorshoniYear',prodorshoniYear);
@@ -105,21 +123,25 @@ router.get('/female',female);
 router.post('/femaleYear',femaleYear);
 router.get('/femaleForm',femaleForm);
 router.post('/femaleForms',femaleFormPost);
+router.post('/generatePdffemale',generatePdffemale);
 
 router.get('/gardener',gardener);
 router.post('/gardenerYear',gardenerYear);
 router.get('/gardenerForm',gardenerForm);
 router.post('/gardenerForms',gardenerFormPost);
+router.post('/generatePdfgardener',generatePdfgardener);
 
 router.get('/nurseryman',nurseryman);
 router.post('/nurserymanYear',nurserymanYear);
 router.get('/nurserymanForm',nurserymanForm);
 router.post('/nurserymanForms',nurserymanFormPost);
+router.post('/generatePdfnurseryman',generatePdfnurseryman);
 
 router.get('/sprayman',sprayman);
 router.post('/spraymanYear',spraymanYear);
 router.get('/spraymanForm',spraymanForm);
 router.post('/spraymanForms',spraymanFormPost);
+router.post('/generatePdfsprayman',generatePdfsprayman);
 
 
 

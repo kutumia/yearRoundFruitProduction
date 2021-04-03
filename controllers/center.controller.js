@@ -1,4 +1,11 @@
 const db=require('../models');
+const Op = db.Sequelize.Op;
+const { fn, col, cast } = db.sequelize;
+const fs = require("fs");
+const path = require("path");
+
+let pdf = require("html-pdf");
+let ejs = require("ejs");
 const center = db.center;
 const centerInfo = db.centerInfo;
 const chp = db.chp;
@@ -318,13 +325,13 @@ module.exports.chpFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfchp= async (req, res) => {
     try {
     var data= await chp.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/chp/", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -432,13 +439,13 @@ module.exports.farmerFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdffarmer = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await farmer.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/farmer", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -546,13 +553,13 @@ module.exports.kormokortaFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfkormokorta = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await kormokorta.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/kormokorta", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -660,13 +667,13 @@ module.exports.saaoFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfsaao = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await saao.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/saao", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -774,13 +781,13 @@ module.exports.uddanFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfuddan = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await uddan.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/uddan", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -888,13 +895,13 @@ module.exports.femaleFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdffemale = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await female.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/female", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -1002,13 +1009,13 @@ module.exports.gardenerFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfgardener = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await gardener.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/gardener", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -1109,20 +1116,20 @@ module.exports.nurserymanFormPost=async(req,res)=>{
         center_id:user_id
 
         }).then(data => {
-            res.redirect('/center/saao');
+            res.redirect('/center/nurseryman');
         }).catch(err => {
             res.render('errorpage',err);
         });
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfnurseryman = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await nurseryman.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/nurseryman", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -1230,7 +1237,7 @@ module.exports.spraymanFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfgeneratePdf = async (req, res) => {
     try {
     var data= await chp.findAll({
         where: {  center_id: req.session.user_id },
@@ -1355,13 +1362,13 @@ module.exports.apaFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfsprayman = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await sprayman.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/sprayman", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -1461,13 +1468,13 @@ module.exports.buildingDevelopmentFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfbuildingDevelopment = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await buildingDevelopment.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/buildingDevelopment", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -1669,13 +1676,13 @@ module.exports.landDevelopmentFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdflandDevelopment = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await landDevelopment.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/landDevelopment", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
@@ -1877,13 +1884,13 @@ module.exports.wallDevelopmentFormPost=async(req,res)=>{
   
 };
 
-module.exports.generatePdfchak1 = async (req, res) => {
+module.exports.generatePdfwallDevelopment = async (req, res) => {
     try {
-    var data= await chp.findAll({
+    var data= await wallDevelopment.findAll({
         where: {  center_id: req.session.user_id },
       })
         ejs.renderFile(
-            path.join(__dirname, "../views/center/chp/chp/", "pdf.ejs"),
+            path.join(__dirname, "../views/center/wallDevelopment", "pdf.ejs"),
             { records: data,dirname: __dirname },
             (err, data) => {
               if (err) {
