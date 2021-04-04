@@ -41,11 +41,11 @@ module.exports.allCenterInfo=async(req,res)=>{
     await centerInfo.findAll()
     .then(data => {
         console.log(data);
-        res.render('allCenterInfo', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: data });
+        res.render('allCenterInfo', { title: 'সেন্টারের লগিন তথ্য',success:'', records: data });
     })
     .catch(err => {
         console.log("outside");
-        res.render('allCenterInfo', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: err });
+        res.render('allCenterInfo', { title: 'সেন্টারের লগিন তথ্য',success:'', records: err });
     })
 };
 module.exports.charaKolomFixed=async(req,res)=>{
@@ -178,63 +178,96 @@ module.exports.pdsignuppost=async(req,res)=>{
 module.exports.center=async(req,res)=>{
     await center.findAll()
     .then(data => {
-        console.log("inside");
-        res.render('pd/centerinfo/center', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: data });
+        console.log("inside",data);
+        res.render('pd/centerInfo/center', { title: 'সেন্টারের লগিন তথ্য',success:'', records: data });
     })
     .catch(err => {
-        console.log("outside");
-        res.render('pd/centerinfo/center', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: err });
+        console.log("outside",err);
+
     })
      
     //  records:result
 
 };
 
-module.exports.centerFilter=async(req,res)=>{
-    await centerInfo.findAll({
-        where: {Filter: req.body.Filter, center_id: req.session.user_id}
-    })
+module.exports.centerYear=async(req,res)=>{
+    await center.findAll()
     .then(data => {
-        res.render('pd/centerinfo/centerTable', {records: data} ,function(err, html) {
+        res.render('pd/centerInfo/centerTable', {records: data} ,function(err, html) {
             res.send(html);
         });
     })
     .catch(err => {
-        res.render('pd/centerinfo/centerFilter', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: err });
+        console.log("outside",err);
+
     })
 
 };
+module.exports.centerEdit=async(req,res)=>{
+    await center.findByPk(req.params.id)
+    .then(data => {
+        console.log("inside");
+        res.render('pd/centerInfo/centerEdit', { title: 'সেন্টারের লগিন তথ্য ফর্ম',msg:'' ,success:'',records: data});
+    })
+    .catch(err => {
+        console.log("outside",err);
 
-module.exports.centerForm=async(req,res)=>{
-    res.render('pd/centerinfo/centerForm', { title: 'সেন্টারের যোগাযোগ তথ্য',msg:'' ,success:'',user_id: req.session.user_id});
+    })
 };
+module.exports.centerEditPost=async(req,res)=>{
+    var uname = req.body.uname;
+    var user= req.body.user;
 
-module.exports.centerFormPost=async(req,res)=>{
-    var center= req.body.center;
-    var kormokorta= req.body.kormokorta;
-    var podobi= req.body.podobi;
-    var mobile= req.body.mobile;
-    var email= req.body.email;
-    var Filter =req.body.Filter;
-    var user_id =req.body.user_id;
-
-    await centerInfo.create({
-        center: center,
-        kormokorta:kormokorta,
-        podobi:podobi,
-        mobile:mobile,
-        email:email,
-        Filter:Filter,
-        center_id:user_id
-
-        }).then(data => {
-            res.redirect('/pd/center');
-        }).catch(err => {
-            res.render('errorpage',err);
-        });
-  
+    await center.update({ 
+        uname:uname,
+        user:user,
+    },
+    {
+        where: {id: req.params.id}
+    }).then(data => {
+        res.redirect('/pd/center');
+    }).catch(err => {
+        res.render('errorpage',err);
+    });
 };
-//center controller end
+module.exports.centerDelete=async(req,res)=>{
+    var centerDelete = await center.findByPk(req.params.id);
+    try {
+        centerDelete.destroy();
+        res.redirect("/pd/center");
+    }
+    catch{
+        res.render('errorpage',err);
+    }
+    
+};
+module.exports.centerPasswordEdit=async(req,res)=>{
+    await center.findByPk(req.params.id)
+    .then(data => {
+        console.log("inside");
+        res.render('pd/centerInfo/centerPasswordEdit', { title: 'সেন্টারের লগিন তথ্য ফর্ম',msg:'' ,success:'',records: data});
+    })
+    .catch(err => {
+        console.log("outside",err);
+
+    })
+};
+module.exports.centerPasswordEditPost=async(req,res)=>{
+    var password = req.body.password;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await center.update({ 
+        password:hashedPassword
+    },
+    {
+        where: {id: req.params.id}
+    }).then(data => {
+        console.log("data",data);
+        res.redirect('/pd/center');
+    }).catch(err => {
+        console.log(err);
+    });
+};
+//adminInfo controller
 
 //chp controller
 module.exports.chp=async(req,res)=>{

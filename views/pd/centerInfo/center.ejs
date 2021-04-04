@@ -1,0 +1,79 @@
+<%- include('../../includes/header')-%>
+        <div id="wrapper" class="wrapper">
+          <%- include('../../includes/topbar')-%>
+            <div class="page-wrap">
+              <%- include('../../includes/sidebar')-%>
+              <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row clearfix">
+                        <div class="col-md-10">
+                            <h1 class="text-center"><%= title %></h1>
+                        </div>
+                        
+                    </div>
+                  
+
+                     <div class="table-responsive" id="output">
+                        <%if (records.length >0){ %>
+                            <table class="table table-bordered table-striped" id="tblCustomers" cellspacing="0" cellpadding="0">
+                            <thead>
+                            <tr>
+                                <th>সেন্টারের নাম</th>
+                                <th>সেন্টারের ইউজার নাম</th>
+                                <th>সেন্টারের ইউজার নাম ও আইডি পরিবর্তন</th>
+                                <th>সেন্টারের পাসওয়ার্ড পরিবর্তন</th>
+                                <th>সেন্টার বাতিলকরণ </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% records.forEach(function(row){ %>
+                                    <tr>
+                                        <td><%= row.uname %></td>
+                                        <td><%= row.user %></td>
+                                        <td><a class="btn btn-primary btn-xs" href="/pd/centerEdit/<%= row.id %>"><i class="fa fa-edit"></i></a>
+                                        </td> 
+                                        <td><a class="btn btn-primary btn-xs" href="/pd/centerPasswordEdit/<%= row.id %>"><i class="fa fa-wrench"></i></a>
+                                        </td> 
+                                        <td><a class="btn btn-danger btn-xs" href="/pd/centerDelete/<%= row.id %>"><i class="fa fa-trash"></i></a>
+                                        </td> 
+                                       
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <% }else{ %>
+                            <table class="table table-bordered table-striped" id="tblCustomers" cellspacing="0" cellpadding="0">
+                                <thead>
+                                <tr>
+                                    <th>সেন্টারের নাম</th>
+                                    <th>সেন্টারের ইউজার নাম</th>
+                                    <th>কর্মকর্তার নাম</th>
+                                    <th>পদবী</th>
+                                    <th>মোবাইল নং</th>
+                                    <th>ই-মেইল</th>
+                                    <th>ইউজার আইডি ও পাসওয়ার্ড পরিবর্তন</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% records.forEach(function(row){ %>
+                                    <tr>
+                                        <td colspan="10">No data Found</td>
+                                    </tr>
+                                <% }) %>
+                                </tbody>
+                            </table>
+                        <% } %>
+
+                    </div>
+
+
+                   <div id="output"></div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../../includes/footer')-%>
+
+ 

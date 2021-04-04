@@ -9,11 +9,11 @@ const {sprayman,spraymanYear,spraymanForm,spraymanFormPost,female,femaleYear,fem
     infoWorker,infoWorkerYear,infoWorkerForm,infoWorkerFormPost,infoChp,infoChpYear,infoChpForm,infoChpFormPost,
     prodorshoni,prodorshoniYear,prodorshoniForm,prodorshoniFormPost,wallDevelopment,wallDevelopmentYear,wallDevelopmentForm,wallDevelopmentFormPost,
     seedDevelopment,seedDevelopmentYear,seedDevelopmentForm,seedDevelopmentFormPost,landDevelopment,landDevelopmentYear,landDevelopmentForm,landDevelopmentFormPost,
-    guardDevelopment,guardDevelopmentYear,guardDevelopmentForm,guardDevelopmentFormPost,
-    buildingDevelopment,buildingDevelopmentYear,buildingDevelopmentForm,buildingDevelopmentFormPost,apa,apaYear,apaForm,apaFormPost,
+    guardDevelopment,guardDevelopmentYear,guardDevelopmentForm,guardDevelopmentFormPost,center,centerEdit,centerEditPost,centerDelete,
+    buildingDevelopment,buildingDevelopmentYear,buildingDevelopmentForm,buildingDevelopmentFormPost,apa,apaYear,apaForm,apaFormPost,centerPasswordEdit,centerPasswordEditPost,
     farmer,farmerYear,farmerForm,farmerFormPost,kormokorta,kormokortaYear,kormokortaForm,kormokortaFormPost,saao,saaoYear,saaoForm,saaoFormPost,
     uddan,uddanYear,uddanForm,uddanFormPost,charaKolomFixed,allCenterInfo,centersignup,centersignuppost,allcenter,centerlogin,centerloginpost,centerDashboard,
-    center,centerYear,centerForm,centerFormPost,chp,chpYear,chpForm,chpFormPost,generatePdfchp,generatePdffarmer,generatePdfnurseryman,generatePdfsprayman,generatePdfkormokorta,generatePdfsaao,generatePdfgardener,generatePdffemale,generatePdfuddan,generatePdflandDevelopment,generatePdfbuildingDevelopment,generatePdfwallDevelopment} = require('../controllers/center.controller');
+    chp,chpYear,chpForm,chpFormPost,generatePdfchp,generatePdffarmer,generatePdfnurseryman,generatePdfsprayman,generatePdfkormokorta,generatePdfsaao,generatePdfgardener,generatePdffemale,generatePdfuddan,generatePdflandDevelopment,generatePdfbuildingDevelopment,generatePdfwallDevelopment} = require('../controllers/center.controller');
 
 router.get('/',allcenter);
 router.get('/allCenterInfo',allCenterInfo);
@@ -26,9 +26,11 @@ router.get('/signup',centersignup);
 router.post('/signups',centersignuppost);
 
 router.get('/center',center);
-router.post('/centerYear',centerYear);
-router.get('/centerForm',centerForm);
-router.post('/centerForms',centerFormPost);
+router.get('/centerEdit/:id',centerEdit);
+router.post('/centerEditPost/:id',centerEditPost);
+router.get('/centerDelete/:id',centerDelete);
+router.get('/centerPasswordEdit/:id',centerPasswordEdit);
+router.post('/centerPasswordEditPost/:id',centerPasswordEditPost);
 
 router.get('/chp',chp);
 router.post('/chpYear',chpYear);

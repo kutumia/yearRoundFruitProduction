@@ -47,11 +47,11 @@ module.exports.allCenterInfo=async(req,res)=>{
     await centerInfo.findAll()
     .then(data => {
         console.log(data);
-        res.render('allCenterInfo', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: data });
+        res.render('allCenterInfo', { title: 'সেন্টারের লগিন তথ্য',success:'', records: data });
     })
     .catch(err => {
         console.log("outside");
-        res.render('allCenterInfo', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: err });
+        res.render('allCenterInfo', { title: 'সেন্টারের লগিন তথ্য',success:'', records: err });
     })
 };
 module.exports.charaKolomFixed=async(req,res)=>{
@@ -80,9 +80,10 @@ module.exports.centerlogin=async(req,res)=>{
 
 module.exports.centerloginpost=async(req,res)=>{
     try {
-        const uname = req.body.uname;
+        // const uname = req.body.uname;
+        const user = req.body.user;
         const password = req.body.password;
-        center.findAll({ where: {uname: uname} })
+        center.findAll({ where: {user: user} })
         .then(data => {
             if(data.length > 0){
                 bcrypt.compare(password,data[0].password,function(err, result) {
@@ -155,9 +156,9 @@ module.exports.centersignup=async(req,res)=>{
 };
 module.exports.centersignuppost=async(req,res)=>{
     try {
-        const{uname,password,confirmPassword}=req.body;
+        const{uname,user,password,confirmPassword}=req.body;
 
-        const data = await center.findAll({ where: {uname: uname} })
+        const data = await center.findAll({ where: {user: user} })
         if(data.length > 0){
             res.render('center/signup',{title: 'Year Round Fruit Production Central Management Software',msg:'ERROR: The center is already enrolled!'})
         }
@@ -170,6 +171,7 @@ module.exports.centersignuppost=async(req,res)=>{
             try{
                 const createCenter = await center.create({
                     uname: uname,
+                    user:user,
                     password:hashedPassword,
                     pd_id:1
                     })
@@ -188,68 +190,95 @@ module.exports.centersignuppost=async(req,res)=>{
 //signUp controller end
 
 //center controller
-module.exports.center=async(req,res)=>{
-    await centerInfo.findAll({
-        where: {center_id: req.session.user_id}
+module.exports.center = async (req, res) => {
+  await center
+    .findAll({
+      where: { id: req.session.user_id },
     })
-    .then(data => {
-        console.log("inside");
-        res.render('center/centerinfo/center', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: data });
+    .then((data) => {
+      res.render("center/centerInfo/center", {
+        title: "সেন্টারের লগিন তথ্য",
+        success: "",
+        records: data,
+      });
     })
-    .catch(err => {
-        console.log("outside");
-        res.render('center/centerinfo/center', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: err });
-    })
-     
-    //  records:result
+    .catch((err) => {
+      console.log(err);
+    });
 
+  //  records:result
 };
-
-module.exports.centerYear=async(req,res)=>{
-    await centerInfo.findAll({
-        where: {year: req.body.year, center_id: req.session.user_id}
+module.exports.centerEdit = async (req, res) => {
+  await center
+    .findByPk(req.params.id)
+    .then((data) => {
+      res.render("center/centerInfo/centerEdit", {
+        title: "সেন্টারের লগিন তথ্য ফর্ম",
+        msg: "",
+        success: "",
+        records: data,
+      });
     })
-    .then(data => {
-        res.render('center/centerinfo/centerTable', {records: data} ,function(err, html) {
-            res.send(html);
-        });
+    .catch((err) => {
+      console.log(err);
+    });
+};
+module.exports.centerEditPost = async (req, res) => {
+  var uname = req.body.uname;
+  var user = req.body.user;
+
+  await center
+    .update(
+      {
+        uname: uname,
+        user: user,
+      },
+      {
+        where: { id: req.params.id },
+      }
+    )
+    .then((data) => {
+      res.redirect("/center/center");
     })
-    .catch(err => {
-        res.render('center/centerinfo/centerYear', { title: 'সেন্টারের যোগাযোগ তথ্য',success:'', records: err });
-    })
-
+    .catch((err) => {
+      res.render("errorpage", err);
+    });
 };
-
-module.exports.centerForm=async(req,res)=>{
-    res.render('center/centerinfo/centerForm', { title: 'সেন্টারের যোগাযোগ তথ্য',msg:'' ,success:'',user_id: req.session.user_id});
+module.exports.centerDelete = async (req, res) => {
+  var centerDelete = await center.findByPk(req.params.id);
+  try {
+    centerDelete.destroy();
+    res.redirect("/center/center");
+  } catch {
+    res.render("errorpage", err);
+  }
 };
+module.exports.centerPasswordEdit=async(req,res)=>{
+  await center.findByPk(req.params.id)
+  .then(data => {
+      console.log("inside");
+      res.render('center/centerInfo/centerPasswordEdit', { title: 'সেন্টারের লগিন তথ্য ফর্ম',msg:'' ,success:'',records: data});
+  })
+  .catch(err => {
+      console.log("outside",err);
 
-module.exports.centerFormPost=async(req,res)=>{
-    var center= req.body.center;
-    var kormokorta= req.body.kormokorta;
-    var podobi= req.body.podobi;
-    var mobile= req.body.mobile;
-    var email= req.body.email;
-    var year =req.body.year;
-    var user_id =req.body.user_id;
-
-    await centerInfo.create({
-        center: center,
-        kormokorta:kormokorta,
-        podobi:podobi,
-        mobile:mobile,
-        email:email,
-        year:year,
-        center_id:user_id
-
-        }).then(data => {
-            res.redirect('/center/center');
-        }).catch(err => {
-            res.render('errorpage',err);
-        });
-  
+  })
 };
-//center controller end
+module.exports.centerPasswordEditPost=async(req,res)=>{
+  var password = req.body.password;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  await center.update({ 
+      password:hashedPassword
+  },
+  {
+      where: {id: req.params.id}
+  }).then(data => {
+      console.log("data",data);
+      res.redirect('/center/center');
+  }).catch(err => {
+      console.log(err);
+  });
+};
 
 //chp controller
 module.exports.chp=async(req,res)=>{

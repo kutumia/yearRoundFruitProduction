@@ -3,7 +3,7 @@ const router = express.Router();
 // const { Router } = require("express");
 const app=express();
 
-const {pdlogin,pdloginpost,pdDashboard,pdsignup,pdsignuppost,center,centerFilter,centerForm,centerFormPost,chp,chpFilter,farmer,farmerFilter,kormokorta,kormokortaFilter,expense,expenseFilter,expenseForm,expenseFormPost,
+const {pdlogin,pdloginpost,pdDashboard,pdsignup,pdsignuppost,center,centerYear,centerEdit,centerEditPost,centerDelete,centerPasswordEdit,centerPasswordEditPost,chp,chpFilter,farmer,farmerFilter,kormokorta,kormokortaFilter,expense,expenseFilter,expenseForm,expenseFormPost,
     apa,apaFilter,apaForm,apaFormPost,saao,saaoFilter,uddan,uddanFilter,buildingDevelopment,buildingDevelopmentFilter,buildingDevelopmentForm,buildingDevelopmentFormPost
     ,guardDevelopment,guardDevelopmentFilter,guardDevelopmentForm,guardDevelopmentFormPost,
     landDevelopment,landDevelopmentFilter,landDevelopmentForm,landDevelopmentFormPost,
@@ -25,9 +25,12 @@ router.get('/signup',pdsignup);
 router.post('/signups',pdsignuppost);
 
 router.get('/center',center);
-router.post('/centerFilter',centerFilter);
-router.get('/centerForm',centerForm);
-router.post('/centerForms',centerFormPost);
+router.post('/centerYear',centerYear);
+router.get('/centerEdit/:id',centerEdit);
+router.post('/centerEditPost/:id',centerEditPost);
+router.get('/centerDelete/:id',centerDelete);
+router.get('/centerPasswordEdit/:id',centerPasswordEdit);
+router.post('/centerPasswordEditPost/:id',centerPasswordEditPost);
 
 router.get('/chp',chp);
 router.post('/chpFilter',chpFilter);
